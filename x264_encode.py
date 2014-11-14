@@ -85,8 +85,8 @@ def main():
         if o in "-v": video_bitrate = a
         if o in "-s": video_scaling = a
         if o in "-l": audio_language = a
-        if o in "-f": src_videos = get_videos_from_file(a)
-        
+        if o in "-f": src_videos = get_videos_from_file(a)   
+
     # Build the command string.
     for src_file in src_videos:
         command = "mencoder "

@@ -13,3 +13,9 @@ Options:
 -v <value> : Videobitrate will be set to <value>. Default 5000.
 -s X:Y : Scale video to X:Y.
 -l <language> : Sets language to <language>. Use like de or en here.
+
+Required packages:
+media-video/mkvtoolnix
+media-video/mplayer
+media-libs/x264
+dev-python/pexpect
