@@ -2,3 +2,14 @@ x264_encode
 ===========
 
 My video x264 mkv encoding script.
+This script is acting as a wrapper to mencoder/x264 and mkvmerge and
+encodes more or less everything to a mkv file with h264 video and mp3 audio.
+
+Usage:
+./x264_encode.py [options] <file> : Encode <file> with options.
+./x264_encode.py -f <file> : Encode files defined in <file>
+
+Options:
+-v <value> : Videobitrate will be set to <value>. Default 5000.
+-s X:Y : Scale video to X:Y.
+-l <language> : Sets language to <language>. Use like de or en here.
