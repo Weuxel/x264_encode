@@ -95,8 +95,7 @@ def main():
         if video_scaling: command += "-vf scale=" + video_scaling + " "
         command += "-alang " + audio_language + " "
         command += "-oac mp3lame -lameopts abr:br=" + str(audio_bitrate) + " "
-        command += "-af volnorm=2:0.75 "
-#       command += "-af volnorm=1 "
+        command += "-af volnorm=1 "
         mencoder_output_file = make_output_file_name(src_file, output_path, ".avi")
         command += "-o " + mencoder_output_file
         
