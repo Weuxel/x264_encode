@@ -43,7 +43,7 @@ def make_output_file_name(src_file, output_path, extension):
 
 def print_ticks(event):
 
-    line = event["child_result_list"][-1].decode("utf-8").strip().rsplit("\r",1)[1]
+    line = event["child_result_list"].pop().decode("utf-8").strip().rsplit("\r",1)[1]
     print(CYAN + line + NORMAL, end="\r")
 
 
@@ -146,4 +146,8 @@ def usage():
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        print()
+        print(RED + "Exiting..." + NORMAL)
