@@ -1,10 +1,12 @@
 #!/usr/bin/python -W ignore::Warning
 # coding=utf8
 
-__author__="Norman Riess <norman@smash-net.org>"
-__date__ ="$13.11.2014$"
-
+################################################################################
+# x264_encode.py
+# A simple script to encode Video to h264/mp3/mkv
+#
 # Required:
+# python3
 # media-video/mkvtoolnix
 # media-video/mplayer
 # media-libs/x264
@@ -16,7 +18,7 @@ import getopt
 import pexpect
 
 
-#Colors
+# Colors
 RED     = "\033[91m"
 GREEN   = "\033[92m"
 YELLOW  = "\033[93m"
@@ -64,7 +66,7 @@ def main():
     video_bitrate = 5000
     video_scaling = "" # e.g. 1248:702 or empty
     audio_bitrate = 192
-    audio_language = "de"
+    audio_language = "eng"
     output_path = base_dir + "encoded/"
 
     # Check if output path exists, if not, create it.
@@ -85,7 +87,7 @@ def main():
         if o in "-v": video_bitrate = a
         if o in "-s": video_scaling = a
         if o in "-l": audio_language = a
-        if o in "-f": src_videos = get_videos_from_file(a)   
+        if o in "-f": src_videos = get_videos_from_file(a)
 
     # Build the command string.
     for src_file in src_videos:
@@ -98,7 +100,9 @@ def main():
         command += "-af volnorm=1 "
         mencoder_output_file = make_output_file_name(src_file, output_path, ".avi")
         command += "-o " + mencoder_output_file
-        
+
+        print(command)
+
         # Encode the video
         print(BLUE + "Encoding file "+ YELLOW + src_file + NORMAL)
         (out, mencoder_exit) = pexpect.run(command, events={pexpect.TIMEOUT:print_ticks}, timeout=3, withexitstatus=1)
@@ -132,7 +136,7 @@ def main():
 
 
 def usage():
-    
+
     print(GREEN)
     print("Usage:")
     print("./x264_encode.py [options] <file> : Encode <file> with options.")
@@ -141,7 +145,7 @@ def usage():
     print("Options:")
     print("-v <value> : Videobitrate will be set to <value>. Default 5000.")
     print("-s X:Y : Scale video to X:Y.")
-    print("-l <language> : Sets language to <language>. Use like de or en here.")
+    print("-l <language> : Sets language to <language>. Use like ger or eng here.")
     print(NORMAL)
 
 
