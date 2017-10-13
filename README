@@ -15,6 +15,7 @@ Options:
 -l <language> : Sets language to <language>. Use like de or en here.
 
 Required packages:
+python3
 media-video/mkvtoolnix
 media-video/mplayer
 media-libs/x264
